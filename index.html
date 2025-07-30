@@ -4,43 +4,27 @@
      SCRIPT DE REDIRECIONAMENTO CORRIGIDO
      ============================================ -->
 <script>
-  // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
   const link = 'https://ofertasimperdiveis1.github.io/oportunidade-Emagre-a-de-Verdade/';
 
   function setBackRedirect(url) {
-    /* ====================================================
-       Monta a URL final já preservando os parâmetros UTM
-       ==================================================== */
     let urlBackRedirect =
       url.trim() +
       (url.indexOf('?') > 0 ? '&' : '?') +
       document.location.search.replace('?', '').toString();
 
-    /* ====================================================
-       Empilha três estados no histórico para “prender” 
-       o usuário nesta página; ao retornar, disparará popstate
-       ==================================================== */
     history.pushState({}, '', location.href);
     history.pushState({}, '', location.href);
     history.pushState({}, '', location.href);
 
-    /* ====================================================
-       Quando o usuário clica para voltar/navegar para fora
-       redirecionamos imediatamente para a URL definida
-       ==================================================== */
     window.addEventListener('popstate', () => {
-      console.log('onpopstate', urlBackRedirect);
       setTimeout(() => {
         location.href = urlBackRedirect;
       }, 1);
     });
   }
-
-  /* *** ALTERAÇÃO: chamada corrigida (agora com parênteses e usando a constante ‘link’) */
   setBackRedirect(link);
 </script>
 
-<!-- UTMify -->
 <script
   src="https://cdn.utmify.com.br/scripts/utms/latest.js"
   data-utmify-prevent-xcod-sck
@@ -48,7 +32,6 @@
   async
   defer
 ></script>
-<!-- Pixel UTMify -->
 <script>
   window.pixelId = "688914963bc7608e81acaac0";
   var a = document.createElement("script");
@@ -62,359 +45,266 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emagreça de Verdade – Ebook de Emagrecimento Rápido</title>
-  <!-- Fonte Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #f7fdf9;
-      color: #333;
-      line-height: 1.6;
-    }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; border-radius: 12px; }
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Montserrat',sans-serif;background:#f7fdf9;color:#333;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block;border-radius:12px}
+    .container{width:90%;max-width:1200px;margin:0 auto}
 
-    :root {
-      --verde-claro: #e0f7ea;
-      --verde-medio: #a8e6cf;
-      --verde-escuro: #3b8d75;
-      --branco: #fff;
-      --sombra: rgba(0,0,0,0.1);
+    :root{
+      --verde-claro:#e0f7ea;
+      --verde-medio:#a8e6cf;
+      --verde-escuro:#3b8d75;
+      --branco:#fff;
+      --sombra:rgba(0,0,0,.1);
     }
 
-    /* HEADER */
-    header {
-      position: fixed; top: 0; left: 0; width: 100%;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(10px);
-      z-index: 100;
-      box-shadow: 0 2px 8px var(--sombra);
+    header{
+      position:fixed;top:0;left:0;width:100%;
+      background:rgba(255,255,255,.85);
+      backdrop-filter:blur(10px);
+      z-index:100;box-shadow:0 2px 8px var(--sombra);
     }
-    .header-container {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 15px 0;
-    }
-    .logo { font-size: 1.8rem; font-weight: 700; color: var(--verde-escuro); }
-    nav a { margin-left: 20px; font-weight: 600; color: var(--verde-escuro); transition: color .3s; }
-    nav a:hover { color: var(--verde-medio); }
+    .header-container{display:flex;justify-content:space-between;align-items:center;padding:15px 0}
+    .logo{font-size:1.8rem;font-weight:700;color:var(--verde-escuro)}
+    nav a{margin-left:20px;font-weight:600;color:var(--verde-escuro);transition:.3s}
+    nav a:hover{color:var(--verde-medio)}
 
-    /* HERO */
-    .hero {
-      position: relative; height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; color: var(--branco); overflow: hidden;
+    .hero{
+      position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
+      text-align:center;color:var(--branco);overflow:hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: url('https://clinicawa.com.br/wp-content/uploads/2023/08/saude-e-emagrecimento.jpg') center/cover no-repeat;
-      opacity: 0.25; z-index: 1;
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:url('https://clinicawa.com.br/wp-content/uploads/2023/08/saude-e-emagrecimento.jpg') center/cover no-repeat;
+      opacity:.25;z-index:1;
     }
-    .hero::after {
-      content: '';
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,120,90,0.6); z-index: 2;
+    .hero::after{
+      content:'';position:absolute;inset:0;background:rgba(0,120,90,.6);z-index:2;
     }
-    .hero .content {
-      position: relative; z-index: 3;
-      max-width: 800px; padding: 0 20px;
-      animation: fadeIn 1s ease-out;
+    .hero .content{position:relative;z-index:3;max-width:800px;padding:0 20px;animation:fadeIn 1s}
+    .hero h1{font-size:3rem;margin-bottom:20px;animation:slideUp 1s}
+    .hero p{font-size:1.2rem;margin-bottom:30px;animation:fadeIn 1.2s}
+    .btn-primary{
+      background:var(--verde-claro);color:var(--verde-escuro);
+      padding:15px 35px;border:none;border-radius:50px;
+      font-size:1rem;font-weight:600;cursor:pointer;
+      box-shadow:0 8px 16px var(--sombra);transition:.3s;
     }
-    .hero h1 {
-      font-size: 3rem; margin-bottom: 20px;
-      animation: slideUp 1s ease-out;
-    }
-    .hero p {
-      font-size: 1.2rem; margin-bottom: 30px;
-      animation: fadeIn 1.2s ease-out;
-    }
-    .btn-primary {
-      background: var(--verde-claro); color: var(--verde-escuro);
-      padding: 15px 35px; border: none; border-radius: 50px;
-      font-size: 1rem; font-weight: 600; cursor: pointer;
-      box-shadow: 0 8px 16px var(--sombra); transition: transform .3s;
-    }
-    .btn-primary:hover { transform: translateY(-4px); }
+    .btn-primary:hover{transform:translateY(-4px)}
 
-    /* WAVE */
-    .wave svg { display: block; width: 100%; margin-top: -5px; }
+    .wave svg{display:block;width:100%;margin-top:-5px}
 
-    /* SECTIONS */
-    section { padding: 80px 0; }
-    section:nth-of-type(even) { background: var(--verde-claro); }
-    section h2 {
-      text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: var(--verde-escuro);
-      position: relative;
+    section{padding:80px 0}
+    section:nth-of-type(even){background:var(--verde-claro)}
+    section h2{
+      text-align:center;font-size:2.5rem;margin-bottom:40px;color:var(--verde-escuro);position:relative;
     }
-    section h2::after {
-      content: ''; width: 60px; height: 4px; background: var(--verde-medio);
-      position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+    section h2::after{
+      content:'';width:60px;height:4px;background:var(--verde-medio);
+      position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
     }
 
-    /* GRID & CARDS */
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px; align-items: stretch;
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;align-items:stretch}
+    .card{
+      background:var(--branco);padding:25px;border-radius:16px;
+      box-shadow:0 8px 20px var(--sombra);display:flex;flex-direction:column;transition:.3s;
     }
-    .card {
-      background: var(--branco); padding: 25px; border-radius: 16px;
-      box-shadow: 0 8px 20px var(--sombra); display: flex; flex-direction: column;
-      transition: transform .3s;
-    }
-    .card:hover { transform: translateY(-8px); }
-    .card h3 { margin-bottom: 15px; color: var(--verde-escuro); font-size: 1.2rem; }
-    .card p { flex: 1; color: #555; }
+    .card:hover{transform:translateY(-8px)}
+    .card h3{margin-bottom:15px;color:var(--verde-escuro);font-size:1.2rem}
+    .card p{flex:1;color:#555}
 
-    /* IMAGENS */
-    #before-after .grid img,
-    #photo-testimonials .grid img { object-fit: cover; height: auto; }
+    #before-after .grid img,#photo-testimonials .grid img{object-fit:cover;height:auto}
 
-    /* OFERTA PRINCIPAL CENTRALIZADA */
-    #offer {
-      background: var(--verde-claro); border-radius: 16px;
-      padding: 60px 20px; box-shadow: 0 8px 20px var(--sombra);
-      max-width: 600px; margin: 60px auto; text-align: center;
+    #offer{
+      background:var(--verde-claro);border-radius:16px;padding:60px 20px;
+      box-shadow:0 8px 20px var(--sombra);max-width:600px;margin:60px auto;text-align:center;
     }
-    #offer h2 { margin-bottom: 20px; font-size: 2rem; color: var(--verde-escuro); }
-    #offer h3 { font-size: 1.5rem; color: var(--verde-escuro); margin-bottom: 10px; }
-    .offer-price { font-size: 2.5rem; color: var(--verde-escuro); margin-bottom: 5px; }
-    .offer-installment { font-size: 1rem; color: #555; margin-bottom: 20px; }
-    .offer-guarantee { font-size: 1rem; color: #555; margin-bottom: 30px; }
+    #offer h2{margin-bottom:20px;font-size:2rem;color:var(--verde-escuro)}
+    #offer h3{font-size:1.5rem;color:var(--verde-escuro);margin-bottom:10px}
+    .offer-price{font-size:2.5rem;color:var(--verde-escuro);margin-bottom:5px}
+    .offer-installment{font-size:1rem;color:#555;margin-bottom:20px}
+    .offer-guarantee{font-size:1rem;color:#555;margin-bottom:30px}
 
-    /* DETALHES EM CAIXA ESCURA */
-    .offer-details-box {
-      background: var(--verde-escuro);
-      color: var(--branco);
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      text-align: left;
+    .offer-details-box{
+      background:var(--verde-escuro);color:var(--branco);
+      padding:20px;border-radius:12px;margin-bottom:30px;text-align:left;
     }
-    .offer-details-box ul { list-style: disc inside; }
-    .offer-details-box li { margin-bottom: 10px; font-weight: 500; }
+    .offer-details-box ul{list-style:disc inside}
+    .offer-details-box li{margin-bottom:10px;font-weight:500}
 
-    /* ANIMAÇÃO SINCRONA */
-    @keyframes pulseSync {
-      0%,100% { transform: scale(1); }
-      50%     { transform: scale(1.1); }
-    }
-    .pulse-sync {
-      animation: pulseSync 1.5s infinite;
+    @keyframes pulseSync{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+    .pulse-sync{animation:pulseSync 1.5s infinite}
+
+    .timer{
+      background:var(--verde-escuro);color:var(--branco);font-size:2rem;font-weight:700;
+      padding:15px 30px;border-radius:8px;display:inline-block;margin-bottom:20px;
     }
 
-    .timer {
-      background: var(--verde-escuro);
-      color: var(--branco);
-      font-size: 2rem;
-      font-weight: 700;
-      padding: 15px 30px;
-      border-radius: 8px;
-      display: inline-block;
-      margin-bottom: 20px;
+    .btn-offer{
+      background:var(--verde-escuro);color:var(--branco);
+      padding:20px 50px;font-size:1.25rem;font-weight:700;border:none;border-radius:50px;
+      cursor:pointer;text-transform:uppercase;box-shadow:0 12px 24px var(--sombra);
     }
 
-    .btn-offer {
-      background: var(--verde-escuro); color: var(--branco);
-      padding: 20px 50px; font-size: 1.25rem; font-weight: 700;
-      border: none; border-radius: 50px; cursor: pointer;
-      text-transform: uppercase;
-      box-shadow: 0 12px 24px var(--sombra);
+    .faq .item{margin-bottom:20px}
+    .faq .question{
+      background:var(--verde-medio);padding:15px 20px;border-radius:8px;
+      font-weight:600;cursor:pointer;position:relative;
     }
+    .faq .question::after{content:'+';position:absolute;right:20px;font-size:1.2rem}
+    .faq .question.active::after{content:'-'}
+    .faq .answer{
+      max-height:0;overflow:hidden;transition:max-height .4s ease;
+      background:var(--branco);padding:0 20px;border-radius:0 0 8px 8px;box-shadow:0 4px 10px var(--sombra);
+    }
+    .faq .answer p{padding:15px 0}
 
-    /* FAQ */
-    .faq .item { margin-bottom: 20px; }
-    .faq .question {
-      background: var(--verde-medio); padding: 15px 20px; border-radius: 8px;
-      font-weight: 600; cursor: pointer; position: relative;
-    }
-    .faq .question::after { content: '+'; position: absolute; right: 20px; font-size: 1.2rem; }
-    .faq .question.active::after { content: '-'; }
-    .faq .answer {
-      max-height: 0; overflow: hidden; transition: max-height .4s ease;
-      background: var(--branco); padding: 0 20px; border-radius: 0 0 8px 8px;
-      box-shadow: 0 4px 10px var(--sombra);
-    }
-    .faq .answer p { padding: 15px 0; }
+    #guarantee{text-align:center;padding:40px 0}
+    #guarantee img{max-width:200px;margin:0 auto}
+    #guarantee p{margin-top:10px;color:#555;font-size:1rem}
 
-    /* GARANTIA */
-    #guarantee { text-align: center; padding: 40px 0; }
-    #guarantee img { max-width: 200px; margin: 0 auto; }
-    #guarantee p { margin-top: 10px; color: #555; font-size: 1rem; }
+    footer{background:var(--verde-escuro);color:var(--branco);text-align:center;padding:20px 0;font-size:.9rem}
 
-    /* FOOTER */
-    footer {
-      background: var(--verde-escuro); color: var(--branco);
-      text-align: center; padding: 20px 0; font-size: .9rem;
-    }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 
-    /* ANIMAÇÕES */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* RESPONSIVO */
-    @media(max-width:768px) {
-      header { display: none; }
-      .hero h1 { font-size: 2rem; }
+    @media(max-width:768px){
+      header{display:none}
+      .hero h1{font-size:2rem}
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="container header-container">
-      <div class="logo">Emagreça de Verdade</div>
-      <nav>
-        <a href="#benefits">Benefícios</a>
-        <a href="#features">Conteúdo</a>
-        <a href="#before-after">Antes & Depois</a>
-        <a href="#photo-testimonials">Fotos</a>
-        <a href="#offer">Oferta</a>
-        <a href="#faq">FAQ</a>
-        <a href="#guarantee">Garantia</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="content">
-      <h1>Você já se sentiu como se o emagrecimento fosse um jogo manipulado?</h1>
-      <p>A cada tentativa a frustração cresce, e nada parece funcionar. A verdade não está na dieta ou no treino, mas em um truque simples, natural e acessível que vai transformar seu corpo sem sacrifícios extremos.</p>
-      <button class="btn-primary" onclick="location.href='#offer'">SIM, QUERO COMEÇAR AGORA!</button>
-    </div>
-  </section>
-
-  <!-- WAVE -->
-  <div class="wave">
-    <svg viewBox="0 0 1440 100"><path fill="#ffffff" d="M0,50 C360,100 1080,0 1440,50 L1440,100 L0,100 Z"/></svg>
+<header>
+  <div class="container header-container">
+    <div class="logo">Emagreça de Verdade</div>
+    <nav>
+      <a href="#benefits">Benefícios</a>
+      <a href="#features">Conteúdo</a>
+      <a href="#before-after">Antes & Depois</a>
+      <a href="#photo-testimonials">Fotos</a>
+      <a href="#offer">Oferta</a>
+      <a href="#faq">FAQ</a>
+      <a href="#guarantee">Garantia</a>
+    </nav>
   </div>
+</header>
 
-  <!-- BENEFÍCIOS -->
-  <section id="benefits" class="container">
-    <h2>O que está te sabotando?</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Estresse Sem Fundo</h3>
-        <p>Você sabia que o estresse constante te arrasta a um buraco onde nem as soluções caras funcionam? Pequenos hábitos podem mudar tudo.</p>
-      </div>
-      <div class="card">
-        <h3>Sabotadores Invisíveis</h3>
-        <p>A maioria dos alimentos que você acha saudáveis está te sabotando. Vamos expor a verdade escondida dos industrializados.</p>
-      </div>
-      <div class="card">
-        <h3>Desculpas Sem Fim</h3>
-        <p>“Segunda-feira eu começo” virou rotina? Ou você age agora, ou segue se escondendo atrás de desculpinhas.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTEÚDO DO EBOOK -->
-  <section id="features" class="container">
-    <h2>Seu caminho para resultados reais</h2>
-    <div class="grid">
-      <div class="card"><h3>Truque em 2 Minutos</h3><p>Um método tão simples que você aplica em menos de 2 minutos e já vê a diferença.</p></div>
-      <div class="card"><h3>Transforme enquanto dorme</h3><p>Descubra como pequenas ações noturnas aceleram a queima de gordura sem esforço extra.</p></div>
-      <div class="card"><h3>Sem Dietas Milagrosas</h3><p>Chega de pílulas e sacrifícios: um plano acessível, natural e sustentável.</p></div>
-    </div>
-  </section>
-
-  <!-- ANTES & DEPOIS -->
-  <section id="before-after" class="container">
-    <h2>Antes & Depois</h2>
-    <div class="grid">
-      <div class="card"><img src="https://cdn.xquiz.co/images/c6e2e379-a5be-4af6-b3fc-a4ef1283dc55" alt="Antes & Depois"></div>
-      <div class="card"><img src="https://cdn.xquiz.co/images/aaecbec8-d826-44f2-89af-13a03d4658e8" alt="Antes & Depois"></div>
-      <div class="card"><img src="https://cdn.xquiz.co/images/8496e1d9-0a00-45d7-843f-70fc09029cfa" alt="Antes & Depois"></div>
-    </div>
-  </section>
-
-  <!-- DEPOIMENTOS EM FOTOS -->
-  <section id="photo-testimonials" class="container">
-    <h2>Depoimentos em Fotos</h2>
-    <div class="grid">
-      <div class="card"><img src="https://cdn.xquiz.co/images/e7d464c0-25bf-4a08-953d-4e7d2c630e27" alt="Depoimento"></div>
-      <div class="card"><img src="https://cdn.xquiz.co/images/584ce3b9-33c7-41ee-b553-160887132c65" alt="Depoimento"></div>
-    </div>
-  </section>
-
-  <!-- OFERTA PRINCIPAL -->
-  <section id="offer">
-    <div class="timer pulse-sync">Oferta termina em: <span id="countdown">02:33:00</span></div>
-    <h2>O mais comprado e preferido entre as opções do mercado</h2>
-    <h3>Pacote Completo</h3>
-    <div class="offer-price">R$ 14,90</div>
-    <div class="offer-installment">*oferta por tempo limitado</div>
-    <div class="offer-details-box">
-      <ul>
-        <li>Acesso vitalício e imediato</li>
-        <li>Guias de refeições práticas e deliciosas</li>
-        <li>Rotina HIIT de 15 minutos para dias corridos</li>
-        <li>Estratégias de jejum intermitente sem sofrimento</li>
-        <li>Técnicas mentais para manter foco e motivação</li>
-      </ul>
-    </div>
-    <div class="offer-guarantee">100% garantia de satisfação ou seu dinheiro de volta em 7 dias</div>
-    <button class="btn-offer pulse-sync" onclick="location.href='https://www.ggcheckout.com/checkout/v2/Tvhhk8z0D39EtJB5iDSn'">
-      SIM, EU QUERO MUDAR DE VIDA!
+<section class="hero">
+  <div class="content">
+    <h1>Você já se sentiu como se o emagrecimento fosse um jogo manipulado?</h1>
+    <p>A cada tentativa a frustração cresce, e nada parece funcionar. A verdade não está na dieta ou no treino, mas em um truque simples, natural e acessível que vai transformar seu corpo sem sacrifícios extremos.</p>
+    <!-- ALTERAÇÃO: rolagem suave até a seção de oferta -->
+    <button class="btn-primary" onclick="document.getElementById('offer').scrollIntoView({behavior:'smooth'});">
+      SIM, QUERO COMEÇAR AGORA!
     </button>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq" class="container faq">
-    <h2>Perguntas Frequentes</h2>
-    <div class="item"><div class="question">Este método serve para qualquer idade?</div><div class="answer"><p>Sim. Testado em pessoas de 18 a 60 anos, ajustável ao seu perfil para máxima segurança.</p></div></div>
-    <div class="item"><div class="question">Vou precisar de suplementos caros?</div><div class="answer"><p>Não. Foco em alimentos naturais e acessíveis. Suplementos são opcionais.</p></div></div>
-    <div class="item"><div class="question">Em quanto tempo verei resultados?</div><div class="answer"><p>Primeiras mudanças já na primeira semana; 0,5 kg–1 kg de gordura por semana.</p></div></div>
-    <div class="item"><div class="question">Posso seguir com lesões?</div><div class="answer"><p>Sim. Há variações de baixo impacto para segurança de todos.</p></div></div>
-    <div class="item"><div class="question">É rápido mas seguro?</div><div class="answer"><p>100% seguro: baseado em ciência, preserva massa magra e saúde hormonal.</p></div></div>
-  </section>
+<div class="wave">
+  <svg viewBox="0 0 1440 100"><path fill="#ffffff" d="M0,50 C360,100 1080,0 1440,50 L1440,100 L0,100 Z"/></svg>
+</div>
 
-  <!-- GARANTIA -->
-  <section id="guarantee" class="container">
-    <img src="https://guiadacalistenia.shop/images/risco-zero-oab-1.png" alt="Garantia Risco Zero">
-    <p>Com nossa Garantia Risco Zero, experimente por 7 dias. Sem resultados? Reembolso total.</p>
-  </section>
+<section id="benefits" class="container">
+  <h2>O que está te sabotando?</h2>
+  <div class="grid">
+    <div class="card"><h3>Estresse Sem Fundo</h3><p>Você sabia que o estresse constante te arrasta a um buraco onde nem as soluções caras funcionam? Pequenos hábitos podem mudar tudo.</p></div>
+    <div class="card"><h3>Sabotadores Invisíveis</h3><p>A maioria dos alimentos que você acha saudáveis está te sabotando. Vamos expor a verdade escondida dos industrializados.</p></div>
+    <div class="card"><h3>Desculpas Sem Fim</h3><p>“Segunda-feira eu começo” virou rotina? Ou você age agora, ou segue se escondendo atrás de desculpinhas.</p></div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2025 Emagreça de Verdade. Todos os direitos reservados.
-  </footer>
+<section id="features" class="container">
+  <h2>Seu caminho para resultados reais</h2>
+  <div class="grid">
+    <div class="card"><h3>Truque em 2 Minutos</h3><p>Um método tão simples que você aplica em menos de 2 minutos e já vê a diferença.</p></div>
+    <div class="card"><h3>Transforme enquanto dorme</h3><p>Descubra como pequenas ações noturnas aceleram a queima de gordura sem esforço extra.</p></div>
+    <div class="card"><h3>Sem Dietas Milagrosas</h3><p>Chega de pílulas e sacrifícios: um plano acessível, natural e sustentável.</p></div>
+  </div>
+</section>
 
-  <script>
-    // Countdown timer
-    let remaining = 2 * 3600 + 33 * 60;
-    const display = document.getElementById('countdown');
-    function updateTimer() {
-      if (remaining >= 0) {
-        const hrs = String(Math.floor(remaining / 3600)).padStart(2,'0');
-        const mins = String(Math.floor((remaining % 3600)/60)).padStart(2,'0');
-        const secs = String(remaining % 60).padStart(2,'0');
-        display.textContent = `${hrs}:${mins}:${secs}`;
-        remaining--;
-      }
+<section id="before-after" class="container">
+  <h2>Antes & Depois</h2>
+  <div class="grid">
+    <div class="card"><img src="https://cdn.xquiz.co/images/c6e2e379-a5be-4af6-b3fc-a4ef1283dc55" alt="Antes & Depois"></div>
+    <div class="card"><img src="https://cdn.xquiz.co/images/aaecbec8-d826-44f2-89af-13a03d4658e8" alt="Antes & Depois"></div>
+    <div class="card"><img src="https://cdn.xquiz.co/images/8496e1d9-0a00-45d7-843f-70fc09029cfa" alt="Antes & Depois"></div>
+  </div>
+</section>
+
+<section id="photo-testimonials" class="container">
+  <h2>Depoimentos em Fotos</h2>
+  <div class="grid">
+    <div class="card"><img src="https://cdn.xquiz.co/images/e7d464c0-25bf-4a08-953d-4e7d2c630e27" alt="Depoimento"></div>
+    <div class="card"><img src="https://cdn.xquiz.co/images/584ce3b9-33c7-41ee-b553-160887132c65" alt="Depoimento"></div>
+  </div>
+</section>
+
+<section id="offer">
+  <div class="timer pulse-sync">Oferta termina em: <span id="countdown">02:33:00</span></div>
+  <h2>O mais comprado e preferido entre as opções do mercado</h2>
+  <h3>Pacote Completo</h3>
+  <div class="offer-price">R$ 14,90</div>
+  <div class="offer-installment">*oferta por tempo limitado</div>
+  <div class="offer-details-box">
+    <ul>
+      <li>Acesso vitalício e imediato</li>
+      <li>Guias de refeições práticas e deliciosas</li>
+      <li>Rotina HIIT de 15 minutos para dias corridos</li>
+      <li>Estratégias de jejum intermitente sem sofrimento</li>
+      <li>Técnicas mentais para manter foco e motivação</li>
+    </ul>
+  </div>
+  <div class="offer-guarantee">100% garantia de satisfação ou seu dinheiro de volta em 7 dias</div>
+  <button class="btn-offer pulse-sync" onclick="location.href='https://www.ggcheckout.com/checkout/v2/Tvhhk8z0D39EtJB5iDSn'">
+    SIM, EU QUERO MUDAR DE VIDA!
+  </button>
+</section>
+
+<section id="faq" class="container faq">
+  <h2>Perguntas Frequentes</h2>
+  <div class="item"><div class="question">Este método serve para qualquer idade?</div><div class="answer"><p>Sim. Testado em pessoas de 18 a 60 anos, ajustável ao seu perfil para máxima segurança.</p></div></div>
+  <div class="item"><div class="question">Vou precisar de suplementos caros?</div><div class="answer"><p>Não. Foco em alimentos naturais e acessíveis. Suplementos são opcionais.</p></div></div>
+  <div class="item"><div class="question">Em quanto tempo verei resultados?</div><div class="answer"><p>Primeiras mudanças já na primeira semana; 0,5 kg–1 kg de gordura por semana.</p></div></div>
+  <div class="item"><div class="question">Posso seguir com lesões?</div><div class="answer"><p>Sim. Há variações de baixo impacto para segurança de todos.</p></div></div>
+  <div class="item"><div class="question">É rápido mas seguro?</div><div class="answer"><p>100% seguro: baseado em ciência, preserva massa magra e saúde hormonal.</p></div></div>
+</section>
+
+<section id="guarantee" class="container">
+  <img src="https://guiadacalistenia.shop/images/risco-zero-oab-1.png" alt="Garantia Risco Zero">
+  <p>Com nossa Garantia Risco Zero, experimente por 7 dias. Sem resultados? Reembolso total.</p>
+</section>
+
+<footer>
+  © 2025 Emagreça de Verdade. Todos os direitos reservados.
+</footer>
+
+<script>
+  let remaining = 2*3600 + 33*60;
+  const display = document.getElementById('countdown');
+  function updateTimer(){
+    if(remaining>=0){
+      const hrs=String(Math.floor(remaining/3600)).padStart(2,'0');
+      const mins=String(Math.floor((remaining%3600)/60)).padStart(2,'0');
+      const secs=String(remaining%60).padStart(2,'0');
+      display.textContent=`${hrs}:${mins}:${secs}`;
+      remaining--;
     }
-    setInterval(updateTimer, 1000);
-    updateTimer();
+  }
+  setInterval(updateTimer,1000);updateTimer();
 
-    // FAQ toggle
-    document.querySelectorAll('.faq .question').forEach(q => {
-      q.addEventListener('click', () => {
-        q.classList.toggle('active');
-        const ans = q.nextElementSibling;
-        ans.style.maxHeight = ans.style.maxHeight ? null : ans.scrollHeight + 'px';
-      });
+  document.querySelectorAll('.faq .question').forEach(q=>{
+    q.addEventListener('click',()=>{
+      q.classList.toggle('active');
+      const ans=q.nextElementSibling;
+      ans.style.maxHeight=ans.style.maxHeight?null:ans.scrollHeight+'px';
     });
-  </script>
+  });
+</script>
 </body>
 </html>
