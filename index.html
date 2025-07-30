@@ -1,21 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+<!-- ============================================
+     SCRIPT DE REDIRECIONAMENTO CORRIGIDO
+     ============================================ -->
 <script>
   // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
   const link = 'https://ofertasimperdiveis1.github.io/oportunidade-Emagre-a-de-Verdade/';
 
   function setBackRedirect(url) {
-    let urlBackRedirect = url;
-    urlBackRedirect = urlBackRedirect =
-      urlBackRedirect.trim() +
-      (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+    /* ====================================================
+       Monta a URL final já preservando os parâmetros UTM
+       ==================================================== */
+    let urlBackRedirect =
+      url.trim() +
+      (url.indexOf('?') > 0 ? '&' : '?') +
       document.location.search.replace('?', '').toString();
 
+    /* ====================================================
+       Empilha três estados no histórico para “prender” 
+       o usuário nesta página; ao retornar, disparará popstate
+       ==================================================== */
     history.pushState({}, '', location.href);
     history.pushState({}, '', location.href);
     history.pushState({}, '', location.href);
 
+    /* ====================================================
+       Quando o usuário clica para voltar/navegar para fora
+       redirecionamos imediatamente para a URL definida
+       ==================================================== */
     window.addEventListener('popstate', () => {
       console.log('onpopstate', urlBackRedirect);
       setTimeout(() => {
@@ -24,9 +36,11 @@
     });
   }
 
+  /* *** ALTERAÇÃO: chamada corrigida (agora com parênteses e usando a constante ‘link’) */
   setBackRedirect(link);
 </script>
 
+<!-- UTMify -->
 <script
   src="https://cdn.utmify.com.br/scripts/utms/latest.js"
   data-utmify-prevent-xcod-sck
@@ -34,7 +48,7 @@
   async
   defer
 ></script>
-  // utmify
+<!-- Pixel UTMify -->
 <script>
   window.pixelId = "688914963bc7608e81acaac0";
   var a = document.createElement("script");
@@ -43,7 +57,7 @@
   a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
   document.head.appendChild(a);
 </script>
-  // utmify
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
